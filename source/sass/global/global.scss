@@ -110,3 +110,10 @@ img {
     pointer-events: none;
   }
 }
+
+a,
+button,
+label,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
