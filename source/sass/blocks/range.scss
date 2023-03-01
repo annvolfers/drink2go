@@ -9,7 +9,7 @@
   }
 }
 
-.range__scale {
+.range__target {
   position: relative;
   width: 100%;
   height: 2px;
@@ -17,54 +17,83 @@
   background-color: variables.$grey;
   cursor: pointer;
 
+  &--disabled {
+    cursor: default;
+  }
+
+  &--nojs {
+    display: none;
+  }
+
   @media (min-width: variables.$tablet-width) {
     margin-bottom: 32px;
   }
 }
 
-.range--disabled .range__scale {
-  cursor: default;
+.range__base {
+  position: relative;
+  width: calc(100% - 22px);
+  margin: 0 auto;
+  height: 100%;
 }
 
-.range__bar {
+.range__connects {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.range__connect {
   position: absolute;
   top: -1px;
+  right: 0;
   height: 4px;
+  width: 100%;
   background-color: variables.$primary;
+  will-change: transform;
+  transform-origin: 0 0;
+  transform-style: flat;
 }
 
-.range--disabled .range__bar {
+.range__target--disabled .range__connect {
   background-color: variables.$grey;
 }
 
-.range__toggle {
+.range__origin {
   position: absolute;
-  top: -10px;
+  top: 0;
+  right: 0;
+  height: 0;
+  width: 100%;
+  will-change: transform;
+  transform-origin: 0 0;
+  transform-style: flat;
+}
+
+.range__handle {
+  position: absolute;
+  top: -11px;
+  right: -12px;
   display: block;
   width: 24px;
   height: 24px;
   padding: 0;
+  box-sizing: border-box;
   border: 2px solid variables.$primary;
   border-radius: 50%;
   background-color: variables.$white;
   cursor: pointer;
 
-  &--min {
-    left: -12px;
-  }
-
-  &--max {
-    right: -12px;
-  }
-
   &::before {
     content: "";
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
-    margin: auto;
     width: 16px;
     height: 16px;
     border-radius: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &:hover,
@@ -85,7 +114,7 @@
     }
   }
 
-  &:disabled {
+  &[disabled] {
     border-color: variables.$grey;
     cursor: default;
 
@@ -93,6 +122,11 @@
       content: none;
     }
   }
+}
+
+.range__touch-area {
+  height: 100%;
+  width: 100%;
 }
 
 .range__inputs {
