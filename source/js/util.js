@@ -1,4 +1,4 @@
-const isOutsideClick = (evt, element) => !evt.target.closest(element);
+const isOutsideClick = (evt, elementSelector) => !evt.target.closest(elementSelector);
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
